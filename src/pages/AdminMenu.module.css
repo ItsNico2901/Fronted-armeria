@@ -1,0 +1,133 @@
+.container {
+  max-width: 1080px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.titleGroup h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 34px);
+  letter-spacing: 0.01em;
+}
+
+.titleGroup p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.tagline {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.statCard {
+  padding: 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(161, 42, 42, 0.14), rgba(255, 255, 255, 0.7));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(161, 42, 42, 0.12);
+}
+
+.statCard h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+.statHint {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.statValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.statCard button {
+  align-self: flex-start;
+}
+
+.recentCard {
+  padding: 18px;
+  border-radius: 18px;
+}
+
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.recentList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.recentItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recentItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.recentMeta {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.code {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.recentActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.danger {
+  background: rgba(161, 42, 42, 0.12);
+  border: 1px solid rgba(161, 42, 42, 0.3);
+  color: var(--color-accent);
+}
+
+.emptyState {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}

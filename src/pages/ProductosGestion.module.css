@@ -1,0 +1,20 @@
+.container {
+  padding-bottom: 32px;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.navigateButton {
+  margin-bottom: 18px;
+}
+
+.layout {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}

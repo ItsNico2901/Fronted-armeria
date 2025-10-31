@@ -1,0 +1,124 @@
+.container {
+  max-width: 1080px;
+  margin: 28px auto;
+  padding: 0 16px 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.titleGroup h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 36px);
+}
+
+.titleGroup p {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.summaryHint {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summaryCard {
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(140deg, rgba(161, 42, 42, 0.12), rgba(255, 255, 255, 0.75));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(161, 42, 42, 0.12);
+}
+
+.summaryCard h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--color-text);
+}
+
+.summaryValue {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.summaryHintCard {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.summaryCard button {
+  align-self: flex-start;
+}
+
+.recentCard {
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.recentIntro {
+  margin: 6px 0 18px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.recentList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.recentItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recentItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.recentMeta {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.recentQty {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.recentActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+  justify-content: flex-end;
+}
+
+.empty {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
