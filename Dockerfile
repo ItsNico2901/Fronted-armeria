@@ -1,41 +1,37 @@
-# A generic multi-stage Dockerfile for building and serving a front‑end application.
+###
+# Dockerfile para servir el frontend (build Vite + Nginx)
 #
-# This file assumes your project is a Node.js based application (e.g. React,
-# Vue or Angular) with a standard package.json at the root. It uses a
-# builder stage to compile the source into static assets, then an Nginx
-# stage to serve the compiled files efficiently. If your project structure
-# differs, you can adjust the paths and commands accordingly.
+# Etapa 1: compilar la aplicación
+###
+FROM node:20-alpine AS build
 
-## Stage 1: Build the application
-FROM node:18-alpine AS build
+WORKDIR /app
 
-WORKDIR /usr/src/app
-
-# Install dependencies defined in package.json and package-lock.json (or
-# yarn.lock). Using npm ci is preferred for deterministic builds when
-# package-lock.json exists.
+# Instala dependencias usando package.json + lockfile
 COPY package*.json ./
-RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+RUN npm ci
 
-# Copy all other source code into the container and build the project.
-COPY . ./
+# Copia el resto del código y genera el build de producción
+COPY . .
 
-# The build command should output compiled files into a `dist`, `build` or
-# similar directory. Adjust this if your project uses a different output
-# directory.
+# Permite sobrescribir la URL del backend durante el build (opcional)
+ARG VITE_API_BASE_URL=
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+
 RUN npm run build
 
-## Stage 2: Serve the built assets with Nginx
-FROM nginx:alpine
+###
+# Etapa 2: imagen final ligera con Nginx
+###
+FROM nginx:1.25-alpine AS runtime
 
-# Copy the build output from the previous stage into Nginx's default
-# public folder. Replace `build` with your actual output directory if
-# different (e.g. `dist`).
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
+# Copia artefactos construidos a la raíz pública de Nginx
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Expose port 80 to allow traffic into the container. If you need HTTPS,
-# you'll handle that at the orchestration layer (e.g. with a reverse proxy).
+# Configuración básica para SPA (fallback a index.html)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Start Nginx in the foreground.
+# Ejecuta Nginx en primer plano
 CMD ["nginx", "-g", "daemon off;"]

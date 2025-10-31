@@ -1,3 +1,3 @@
-get https://backend-armeria.nicolavirgilio.cloud/productos
+get https://backend-armeria.nicolavirgilio.cloud/api/productos
 Content-Type: application/json
 x-role: user
